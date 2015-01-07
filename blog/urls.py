@@ -9,6 +9,7 @@ from blog import views
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
+	url(r'^test/$', views.test, name='test'),
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 #	url(r'^' + settings.MEDIA_URL.lstrip('/'), 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 ]

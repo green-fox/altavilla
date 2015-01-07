@@ -9,7 +9,10 @@ def index(request):
 	context = {'article_list': article_list, 'concert_list' : concert_list }
 	return render(request, 'blog/index.html', context)
 
-
+def test(request):
+        concert_list= Concert.objects.order_by('-date')
+        context = {'concert_list' : concert_list }
+        return render(request, 'blog/test.html', context) 
 
 
 
