@@ -8,7 +8,6 @@
 
 <br>
 <br>
-<iframe width="100%" height="300" scrolling="yes" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/25243791&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 
 <!--  """"
 {% load staticfiles %}
@@ -18,25 +17,70 @@
 <br>
 
 
-<!--
-<div class="pagination">
-    <span class="step-links">
-        {% if articles.has_previous %}
-            <a href="?page={{ articles.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ articles.number }} of {{ contacts.paginator.num_pages }}.
-        </span>
 
-        {% if articles.has_next %}
-            <a href="?page={{ articles.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>  -->
+
+<TABLE BORDER="1"> 
+  <CAPTION> Voici le titre du tableau </CAPTION> 
+  <TR> 
+    <TH><iframe width="100%" height="300" scrolling="yes" frameborder="no" 
+src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/25243791&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe></TH>
+    <TH>
+      <TR> 
+        <TH>
+        
+{% if article_list %}
+<div align="center">
+
+        {% for article in article_list %}
+
+                <h2>{{article.title}}</h2>
+
+                {% if article.upload %}
+                <img src="{{ article.upload.url }}" alt="{{ article.upload}}"/>
+                {% endif %}
+
+                {% if article.description %}
+                <article>{{article.description}}</article>
+                {% endif %}
+
+                {% if article.video_code %}
+                <iframe width="560" height="315" src="//www.youtube.com/embed/{{ article.video_code }}" frameborder="0" allowfullscreen></iframe>
+
+                {% endif %}
+                <p><b>Publie le :</b> {{article.creation_date}}</p>
+                =========================================================================
+        {% endfor %}
+
+</div>
+<div>
+
+</div>
+{% endif %}
+	</TH>
+
+
+        <TH>
+		{% if concert_list %}
+			{% for concert in concert_list %}
+			<p><b> Date : </b>{{concert.date}}<br/>
+			 <b>Prix : </b>{{concert.paf}}<br/>
+			 <b>Lieu : </b>{{concert.place}}<br/></p>
+			{% endfor %}
+		{% endif %}</TH>
+      </TR>
+    </TH> 
+  </TR> 
+</TABLE>
+
+
 
 
 <br>
+{% if concert_list %}
+<p>coucou</p>
+{% endif %}
+
 {% if article_list %}
 <div align="center">	
 
