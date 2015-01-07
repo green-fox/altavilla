@@ -8,6 +8,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'altavilla.views.home', name='home'),
     url(r'', include('blog.urls')),
     url(r'^blog/', include('blog.urls')),
-    url(r'^concert/', include('concert.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
