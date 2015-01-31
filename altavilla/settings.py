@@ -13,6 +13,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -86,5 +90,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC_ROOT='/Users/stotch/altavilla/static/'
-MEDIA_ROOT = '/Users/stotch/altavilla/media/'
-MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, '../media')
+MEDIA_URL = '/media/'
