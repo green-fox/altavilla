@@ -15,7 +15,8 @@ class Article(models.Model):
 	video_code=models.CharField(max_length=2500,blank=True)
 #	upload= models.ImageField(upload_to='images/',blank=True)
 	upload = ImageField()
-
+	height= models.IntegerField(default=30)
+        width= models.IntegerField(default=30)
         def image_tag(self):
                 return u'<img src="/media/%s"  height="80" width="80"/>' % self.upload
         image_tag.short_description = 'Image'
@@ -72,3 +73,18 @@ def delete_file_field(sender, **kwargs):
     except :
 	print("bulk delete no file to delete")
 post_delete.connect(delete_file_field, Article)
+
+
+
+
+class Concert(models.Model):
+
+	date=models.DateTimeField(verbose_name="Date du concert (*) :")
+#	datetime.widget = forms.SpdlitDateTimeWidget(time_format=('%H:%M'))
+	paf=models.DecimalField(verbose_name="Prix place  :",max_digits=5,decimal_places=0,blank=True,null=True)
+
+	description=models.CharField(verbose_name="Details (*) :",max_length=50)
+	place=models.CharField(verbose_name="Lieu (*) :",max_length=50)
+	models.help_text="Enter the minimum (inclusive) value for this concept."
+	def __unicode__(self):
+		return self.description	

@@ -45,7 +45,7 @@
 		<h2>{{article.title}}</h2>
 		
 		{% if article.upload %}		
-		<img src="{{ article.upload.url }}"  height="30%" width="30%" alt="{{ article.upload}}"/>		
+		<img src="{{ article.upload.url }}"  height="{{ article.height }}%" width="{{ article.width }}%" alt="{{ article.upload}}"/>		
 		{% endif %}
 
 		{% if article.description %}
@@ -65,5 +65,27 @@
 
 </div>
 {% endif %}
+
+
+ <script type="text/javascript">
+<!-- Debut
+// JavaScript pris sur le site: "http://www.java.scripts-fr.com"
+
+if (document.body)
+{
+var larg = (document.body.clientWidth);
+var haut = (document.body.clientHeight);
+} 
+else
+{
+var larg = (window.innerWidth);
+var haut = (window.innerHeight);
+}
+
+document.write("Cette fenre fait " + larg + " de large et "+haut+" de haut"); 
+</script>
+
+
+
     </body>
 </html>
