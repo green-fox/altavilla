@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_delete
 from django.core.files.storage import default_storage
 # Create your models here.
-
+from sorl.thumbnail import ImageField
 
 
 
@@ -13,7 +13,15 @@ class Article(models.Model):
         creation_date=models.DateTimeField(auto_now_add=True)
 	update_date=models.DateTimeField(auto_now=True)
 	video_code=models.CharField(max_length=2500,blank=True)
-	upload= models.ImageField(upload_to='images/',blank=True)
+#	upload= models.ImageField(upload_to='images/',blank=True)
+	upload = ImageField()
+
+        def image_tag(self):
+                return u'<img src="/media/%s"  height="80" width="80"/>' % self.image
+        image_tag.short_description = 'Image'
+        image_tag.allow_tags = True
+
+
 	def delete(self, *args, **kwargs):
 		try:
 	    		
