@@ -6,6 +6,19 @@ from sorl.thumbnail import ImageField
 
 
 
+class Song(models.Model):
+	song_title=models.CharField(max_length=100)
+	songCloudCode=models.TextField(max_length=2000)
+        songCloudCode_final =models.TextField(editable=False)
+	def save(self, force_insert=False, force_update=False):
+        	self.songCloudCode_final = songCloudCode
+        	super(Song, self).save(force_insert, force_update)
+	def song_tag(self):
+                return u'%s' % self.songCloudCode
+        song_tag.short_description = 'view'
+        song_tag.allow_tags = True
+
+
 class Article(models.Model):
 
         title=models.CharField(max_length=50)
@@ -13,7 +26,6 @@ class Article(models.Model):
         creation_date=models.DateTimeField(auto_now_add=True)
 	update_date=models.DateTimeField(auto_now=True)
 	video_code=models.CharField(max_length=2500,blank=True)
-#	upload= models.ImageField(upload_to='images/',blank=True)
 	upload = ImageField()
 	height= models.IntegerField(default=30)
         width= models.IntegerField(default=30)
