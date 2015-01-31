@@ -88,6 +88,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-#STATIC_ROOT='/Users/stotch/altavilla/static/'
+STATIC_ROOT='/Users/stotch/altavilla/static/'
+
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, '../media')
 MEDIA_URL = '/media/'
