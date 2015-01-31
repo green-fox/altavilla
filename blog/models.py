@@ -17,7 +17,7 @@ class Article(models.Model):
 	upload = ImageField()
 
         def image_tag(self):
-                return u'<img src="/media/%s"  height="80" width="80"/>' % self.image
+                return u'<img src="/images/%s"  height="80" width="80"/>' % self.image
         image_tag.short_description = 'Image'
         image_tag.allow_tags = True
 
