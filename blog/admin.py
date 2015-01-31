@@ -3,7 +3,7 @@ from blog.models import Article,Concert,Song
 from sorl.thumbnail import get_thumbnail
 
 class SongAdmin(admin.ModelAdmin):
-        list_display=('song_title','song_tag')
+        list_display=('song_title','song_tag','songCloudCode_final')
 
 class ArticleAdmin(admin.ModelAdmin):
 	list_display=('title','image_tag','creation_date','update_date')

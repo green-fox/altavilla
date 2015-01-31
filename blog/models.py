@@ -3,7 +3,7 @@ from django.db.models.signals import post_delete
 from django.core.files.storage import default_storage
 # Create your models here.
 from sorl.thumbnail import ImageField
-
+import re
 
 
 class Song(models.Model):
@@ -11,7 +11,10 @@ class Song(models.Model):
 	songCloudCode=models.TextField(max_length=2000)
         songCloudCode_final =models.TextField(editable=False)
 	def save(self, force_insert=False, force_update=False):
-        	self.songCloudCode_final = songCloudCode
+		self.songCloudCode_final = re.sub(r'<iframe.{0,}api.soundcloud.com/', '',self.songCloudCode)
+                self.songCloudCode_final = re.sub(r'playlists/','',self.songCloudCode_final)
+                self.songCloudCode_final = re.sub(r'trackss/','',self.songCloudCode_final)
+		self.songCloudCode_final = re.sub(r'&amp.{0,}</iframe>','',self.songCloudCode_final)
         	super(Song, self).save(force_insert, force_update)
 	def song_tag(self):
                 return u'%s' % self.songCloudCode
