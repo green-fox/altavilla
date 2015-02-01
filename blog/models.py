@@ -58,3 +58,11 @@ class Group_member(models.Model):
                 return u'<img src="/media/%s"  height="80" width="80"/>' % self.picture
         picture_tag.short_description = 'Image'
         picture_tag.allow_tags = True
+
+
+class Carousel(models.Model):
+        picture = ImageField()
+        def picture_tag(self):
+                return u'<img src="/media/%s"  height="80" width="80"/>' % self.picture
+        picture_tag.short_description = 'Image'
+        picture_tag.allow_tags = True
