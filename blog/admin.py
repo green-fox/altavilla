@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Article,Concert,Song
+from blog.models import Article,Concert,Song,Group_member
 from sorl.thumbnail import get_thumbnail
 
 class SongAdmin(admin.ModelAdmin):
@@ -8,9 +8,15 @@ class SongAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
 	list_display=('title','image_tag','creation_date','update_date')
 
+class Group_memberAdmin(admin.ModelAdmin):
+        list_display=('name','picture_tag')
+
+
 class ConcertAdmin(admin.ModelAdmin):
 	list_display=('place','date','paf')	
 
+
 admin.site.register(Song,SongAdmin)
+admin.site.register(Group_member,Group_memberAdmin)
 admin.site.register(Concert,ConcertAdmin)
 admin.site.register(Article,ArticleAdmin)
