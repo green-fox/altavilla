@@ -1,0 +1,31 @@
+ul#menu_horizontal {  /*Ici , c'est ma configuration, 
+Ã
+  vous de la changer */
+
+width : 600px;
+
+height : 25px;
+
+list-style-type : none; /* Car sinon les puces se placent n'importe o
+Ã
+¹ */
+
+}
+
+ul#menu_horizontal li {
+
+padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+
+}
+
+li.bouton_gauche {
+
+float : left;
+
+}
+
+li.bouton_droite {
+
+float : right;
+
+}
