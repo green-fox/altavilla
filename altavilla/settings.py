@@ -92,3 +92,6 @@ STATIC_ROOT='/Users/stotch/altavilla/static/'
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, '../media')
 MEDIA_URL = '/media/'
+TEMPLATE_DIRS = (
+    '/Users/alsch/Documents/my_project/altavilla/blog/',
+)

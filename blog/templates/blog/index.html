@@ -14,7 +14,7 @@
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 100%;
-      height: 40%;
+      height: 50%;
       margin: center;
   }
   </style>
@@ -30,14 +30,14 @@
 
 <br>
 <nav class="navbar navbar-default  navbar-fixed-top">
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="wrapper">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">News</a></li>
             <li><a href="#">Concert</a></li>
             <li><a href="#">Medias</a></li>
             <li><a href="#">Le goupe</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% static "blog/contact.html" %}">Contact</a></li>
           </ul>
         </div>
 </nav>
@@ -49,10 +49,13 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
 
+        {% for picture in carousel_pic %}
+                {% if forloop.first  %}
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		{% else %}
     <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
+		{% endif %}
+	{% endfor %}
   </ol>
 
   <!-- Wrapper for slides -->
@@ -121,31 +124,6 @@
 {% endif %}
 
 
- <script type="text/javascript">
-<!-- Debut
-// JavaScript pris sur le site: "http://www.java.scripts-fr.com"
-
-if (document.body)
-{
-var larg = (document.body.clientWidth);
-var haut = (document.body.clientHeight);
-} 
-else
-{
-var larg = (window.innerWidth);
-var haut = (window.innerHeight);
-}
-
-document.write("Cette fenre fait " + larg + " de large et "+haut+" de haut"); 
-</script>
-
-<nav>
-  <ul class="pagination">
-    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-  
-  </ul>
-</nav>
-
+{% include 'templates/blog/base_footer.html' %}
     </body>
 </html>
