@@ -1,25 +1,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
-   <head>
-       <title>Altavilla</title>
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static "blog/css/style.css" %}">
-	<link href="{% static "blog/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-	<script src="{% static "blog/bootstrap/js/jquery.js" %}"></script>
-	<script src="{% static "blog/bootstrap/js/bootstrap.min.js"%}"></script>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 100%;
-      height: 50%;
-      margin: center;
-  }
-  </style>
+<head>
+<title>Altavilla</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "blog/css/style.css" %}">
+<link href="{% static "blog/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<script src="{% static "blog/bootstrap/js/jquery.js" %}"></script>
+<script src="{% static "blog/bootstrap/js/bootstrap.min.js"%}"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+width: 100%;
+height: 50%;
+margin: center;
+}
+</style>
+</head> 
 
-    </head>  
     <body>
 
 
@@ -27,19 +27,18 @@
 <br>
 <br>
 
-<nav class="navbar navbar-default  navbar-fixed-top" >
-        <div class="collapse navbar-collapse" id="wrapper">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Concert</a></li>
-            <li><a href="#">Medias</a></li>
-            <li><a href="#">Le goupe</a></li>
-            <li><a href="{% static "blog/contact.html" %}">Contact</a></li>
-          </ul>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="collapse navbar-collapse" id="wrapper">
+<ul class="nav navbar-nav">
+<li class="active"><a href="#">Home</a></li>
+<li><a href="#">News</a></li>
+<li><a href="#">Concert</a></li>
+<li><a href="#">Medias</a></li>
+<li><a href="#">Le goupe</a></li>
+<li><a href="{% static "blog/contact.html" %}">Contact</a></li>
+</ul>
+</div>
 </nav>
-
 
 {% if carousel_pic %}
 
@@ -83,56 +82,60 @@
 {% endif %}
 
 
-<div height="10">
+<div>
 <p></p>
 <p></p>
 </div>
 
 <table>
 	<tr>
-		<th>
-			CONCERT
-		</th>
-                <th>
-			LAST NEWS
-                </th>
-                <th>
-			SONGS
-                </th>
+		<th>CONCERT</th>
+		<th>LAST NEWS</th>
+		<th>SONGS</th>
 
 
 	</tr>
 	<tr>
 		<td>
 			<table>
-				<tr>Concert num 1
-				</tr>
+				
+					{% if concert_list %}
+                                                {% for concert in concert_list %}
+							<tr>
+								<td>
+									{{ concert.date |date:"M-d-Y"}}
+									{{ concert.date|timeuntil }}
+								</td>
+							</tr>
+						{% endfor %}
+					{% endif %}
+				
 			</table>
 		</td>
                 <td>
                         <table>
-                                <tr>NEWS num 1
 
 
                 			{% if article_list %}
                         			{% for article in article_list %}
-                                         		<h4>{{article.title}}</h4>
-
-	                                                {% if article.upload %}
-        	                                                <img src="{{ article.upload.url }}" height="100"   width="100" alt="{{ article.upload}}"/>
-							{% endif %}
+							<tr>
+								<td>
+        		                                 		<h4>{{article.title}}</h4>
+		        	                                        {% if article.upload %}
+        	                		                                <img src="{{ article.upload.url }}" height="100"   width="100" alt="{{ article.upload}}">
+									{% endif %}
 	  
-        	                                        {% if article.description %}
-                  	                                      {{article.description}}
-                                             		 {% endif %}
-                                
+		        	                                        {% if article.description %}
+                		  	                                      {{article.description}}
+                                		             		 {% endif %}
+                                				</td>
+							</tr>
 	                       			{% endfor %}
         	               
                 			{% endif %}
 
 
 
-                                </tr>
                         </table>
                 </td>
                 <td>
@@ -166,6 +169,7 @@
 <br>
 
 
-{% include 'templates/blog/base_footer.html' %}
+	{% include 'templates/blog/base_footer.html' %}
     </body>
 </html>
+
