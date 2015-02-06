@@ -25,11 +25,9 @@
 
 <br>
 <br>
-
-
-
 <br>
-<nav class="navbar navbar-default  navbar-fixed-top">
+
+<nav class="navbar navbar-default  navbar-fixed-top" >
         <div class="collapse navbar-collapse" id="wrapper">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -89,68 +87,81 @@
 <p></p>
 <p></p>
 </div>
+
 <table>
-<table align="right" width="90%" style="margin-right:5%">
 	<tr>
+		<th>
+			CONCERT
+		</th>
                 <th>
-			<div align="left">Concert</div>
-		</th>
-		<th>
-			<div>News</div>
-		</th>
-		<th>
-			<div align="right">Songs</div>
-		</th>
-	</tr>
+			LAST NEWS
+                </th>
+                <th>
+			SONGS
+                </th>
 
+
+	</tr>
 	<tr>
 		<td>
-		Concerts
-		</td>
-
-		<td>
-		</table>
-		<div>
-		{% if article_list %}
-        		<table>
-			{% for article in article_list %}
-				<tr>
-					 <h2>{{article.title}}</h2>
+			<table>
+				<tr>Concert num 1
 				</tr>
-
-				<tr>
-					<td>
-				                {% if article.upload %}
-	        				        <img src="{{ article.upload.url }}" height="100"   width="100" alt="{{ article.upload}}"/>
-        				        {% endif %}
-					</td>
-                                        <td>
-                				{% if article.description %}
-                					{{article.description}}
-						{% endif %}
-					</td>
-				</tr>
-        		{% endfor %}
 			</table>
-		{% endif %}		
-		</div>
 		</td>
+                <td>
+                        <table>
+                                <tr>NEWS num 1
 
-		<td>
-{% if song_list %}
-	{%for song in song_list %}
-<div align="right">
-<iframe width="25%" height="120" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ song.songCloudCode_final }}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-</div>
-<p>
-</p>
-	{% endfor %}
-{% endif %}
 
+                			{% if article_list %}
+                        			{% for article in article_list %}
+                                         		<h4>{{article.title}}</h4>
+
+	                                                {% if article.upload %}
+        	                                                <img src="{{ article.upload.url }}" height="100"   width="100" alt="{{ article.upload}}"/>
+							{% endif %}
+	  
+        	                                        {% if article.description %}
+                  	                                      {{article.description}}
+                                             		 {% endif %}
+                                
+	                       			{% endfor %}
+        	               
+                			{% endif %}
+
+
+
+                                </tr>
+                        </table>
                 </td>
-        </tr>
+                <td>
+                        <table>
+                                <tr>
 
+					{% if song_list %}
+					        {%for song in song_list %}
+							<div align="right">
+								<iframe width="100%" align="right" height="120" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ song.songCloudCode_final }}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+	
+
+					        {% endfor %}
+					{% endif %}
+
+                                </tr>
+                        </table>
+                </td>
+
+	</tr>
+	
 </table>
+
+
+
+
+
+
+
 
 <br>
 
